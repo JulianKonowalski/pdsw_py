@@ -5,10 +5,10 @@ try:
 except ImportError:
     import mock.mockSpidev as spidev
 
-k_spi_bus       = 0
-k_spi_rate      = 9600
-k_spi_mode      = 0  
-k_spi_device    = 0
+SPI_BUS       = 0
+SPI_RATE      = 9600
+SPI_MODE      = 0  
+SPI_DEVICE    = 0
 
 class SpiBus:
 
@@ -16,9 +16,9 @@ class SpiBus:
         buffer_size: int = len(CarData.getDataframe())
         self.dummy_data = [0x00 for i in range(buffer_size)]
         self.spi = spidev.SpiDev()
-        self.spi.open(k_spi_bus, k_spi_device)
-        self.spi.max_speed_hz = k_spi_rate
-        self.spi.mode = k_spi_mode
+        self.spi.open(SPI_BUS, SPI_DEVICE)
+        self.spi.max_speed_hz = SPI_RATE
+        self.spi.mode = SPI_MODE
 
     def __normalize__(self, car_data: CarData) -> CarData:
         temp: int = car_data.getValue("TEMP")
