@@ -10,20 +10,20 @@ MAX_PWR_OUTPUT = 80.0
 
 class MainLayout(Layout):
     
-    def __init__(self, parent: tk.Tk, width: int, height: int):
+    def __init__(self, parent: tk.Tk, width: int, height: int) -> None:
         Layout.__init__(self, parent, width, height)
 
-    def __updatePanel__(self, panel: Panel):
+    def __updatePanel__(self, panel: Panel) -> None:
         panel_id: str = panel.getID()
         content: int = self.car_data.getValue(panel_id)
         panel.updateContent(content)
 
-    def __updateGif__(self, gif: Animation):
+    def __updateGif__(self, gif: Animation) -> None:
         num_frames: int = gif.getNumFrames()
         frame_index: int = floor(num_frames * self.car_data.getValue("PWR_OUTPUT") / MAX_PWR_OUTPUT)
         gif.setCurrentFrame(frame_index)
 
-    def __setupWidgets__(self):
+    def __setupWidgets__(self) -> None:
         for i in range(2): 
             self.canvas.grid_rowconfigure(i, weight=1)
 

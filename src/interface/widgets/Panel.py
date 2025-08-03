@@ -36,5 +36,5 @@ class Panel(Widget):
             font=(FONT_FAMILY, content_size)
         )
     
-    def updateContent(self, content: int):
+    def updateContent(self, content: int) -> None:
         self.itemconfigure(self.contentID, text=f"{content}")

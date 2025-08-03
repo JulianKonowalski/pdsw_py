@@ -72,7 +72,7 @@ class Table(Widget):
         font_size: int = floor(self.height / (2 * len(content))) - 5
         self.__setupRows__(content, font_size)
 
-    def __setupRows__(self, content: dict, font_size: int):
+    def __setupRows__(self, content: dict, font_size: int) -> None:
         self.rows: dict = {}
         for index, key in enumerate(content):
             self.rows[key] = TableRow(
@@ -81,11 +81,12 @@ class Table(Widget):
                 self.width,
                 floor(self.height / len(content)),
                 key,
-                content[key]
+                content[key],
+                font_size=font_size
             )
             self.rows[key].grid(row=index, column=0)
     
-    def updateContent(self, content: dict):
-        self.content = content        
+    def updateContent(self, content: dict) -> None:
+        self.content: dict = content        
         for row_key in self.rows:
             self.rows[row_key].updateContent(f"{self.content[row_key]}")

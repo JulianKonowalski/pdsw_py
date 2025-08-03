@@ -25,16 +25,16 @@ class Animation(Widget):
         gif: Image.ImageFile = Image.open(gif_path)
         self.frames: list[ImageTk.PhotoImage] = []
         while True:
-            frame = gif.copy().resize((int(self.width), int(self.height)), Image.LANCZOS)
+            frame: Image = gif.copy().resize((int(self.width), int(self.height)), Image.LANCZOS)
             self.frames.append(ImageTk.PhotoImage(master = self, image=frame))
             try: gif.seek(gif.tell() + 1)
             except EOFError: break
 
     def setCurrentFrame(self, frame_index: int) -> None:
         if frame_index < 0 or frame_index >= len(self.frames): return
-        self.current_frame_index = frame_index
+        self.current_frame_index: int = frame_index
         if (self.imageID != None): self.delete(self.imageID)
-        self.imageID = self.create_image(
+        self.imageID: int = self.create_image(
             0, # x pos
             0, # y pos
             anchor="nw",

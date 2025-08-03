@@ -46,7 +46,7 @@ class Interface(tk.Tk):
 
     def run(self, update_callback: callable) -> None:
         self.update_callback: callable = update_callback
-        self.current_layout = 0
+        self.current_layout: int = 0
         self.layouts[self.current_layout].tkraise()
         self.__update__()
         self.mainloop()
@@ -67,4 +67,4 @@ class Interface(tk.Tk):
     def tickSocDeltaTimer(self) -> None:
         if self.soc_state == None: Popup(self, "Started SOC delta")
         else: Popup(self, f"Delta: {self.soc_state - self.car_data.getValue("SOC")}")
-        self.soc_state = self.car_data.getValue("SOC")
+        self.soc_state: int = self.car_data.getValue("SOC")
