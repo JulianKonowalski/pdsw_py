@@ -1,0 +1,13 @@
+# environment config files
+.venv/
+.idea/
+__pycache__/
+*.env
+
+# log files
+*.log
+
+# pyintaller files
+build/
+dist/
+*.spec
