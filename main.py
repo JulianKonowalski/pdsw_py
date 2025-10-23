@@ -1,12 +1,5 @@
-# from src.gui.Interface import Interface
-from src.spi.SpiBus import SpiBus
+from src.gui.Interface import Interface
 
 if __name__ == "__main__":
-    # interface: Interface = Interface()
-    # interface.run()
-
-    spibus = SpiBus()
-
-
-    while True:
-        print(spibus.getCarData())
+    interface: Interface = Interface()
+    interface.run()
