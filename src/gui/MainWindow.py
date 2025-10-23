@@ -22,8 +22,8 @@ class MainWindow(QMainWindow):
     self.spi_bus: SpiBus = SpiBus()
     self.main_view: MainView = MainView(self)
 
-    self.dataRequest.connect(self.onDataRequest, type=Qt.ConnectionType.QueuedConnection)
-    self.dataUpdated.connect(self.main_view.update)
+    # self.dataRequest.connect(self.onDataRequest, type=Qt.ConnectionType.QueuedConnection)
+    # self.dataUpdated.connect(self.main_view.update)
 
     self.setCentralWidget(self.main_view)
 
