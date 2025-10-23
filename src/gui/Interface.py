@@ -16,7 +16,7 @@ class Interface(QApplication):
       self.setStyleSheet(stylesheet.read())
 
     self.main_window: MainWindow = MainWindow()
-    self.main_window.setWindowState(Qt.WindowState.WindowFullScreen)
+    self.main_window.setFixedSize(800, 480)
     self.main_window.show()
 
   def run(self) -> int:
