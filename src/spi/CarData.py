@@ -1,32 +1,29 @@
-k_car_dataframe: dict = {
-    "BUTTON_STATE"  : 0,
-    "DIAL_0"        : 0,
-    "DIAL_1"        : 0,
-    "DIAL_2"        : 0,
-    "SOC"           : 0,
-    "TEMP"          : 0,
-    "CURR_MSB"      : 0,
-    "CURR_LSB"      : 0,
-    "VOLT_MSB"      : 0,
-    "VOLT_LSB"      : 0,
-    "MAP"           : 0,
-    "PWR"           : 0
-}
-
 class CarData:
 
-    def __init__(self) -> None:
-        self.data: dict = dict.copy(k_car_dataframe)
-
-    def getDataframe() -> dict:
-        return dict.copy(k_car_dataframe)
-
-    def getData(self) -> dict:
-        return dict.copy(self.data)
-
-    def getValue(self, key: str) -> int:
-        try: return self.data[key]
-        except KeyError: return None
-
-    def setValue(self, key: str, value: int) -> None:
-        self.data[key] = value # the value will be added even if the key doesn't exist
+    def __init__(self, data: list[int] = None) -> None:
+        if data == None:
+            self.button_state: int  = 0
+            self.dial_0: int        = 0
+            self.dial_1: int        = 0
+            self.dial_2: int        = 0
+            self.soc: int           = 0
+            self.temp: int          = 0
+            self.curr_msb: int      = 0
+            self.curr_lsb: int      = 0
+            self.volt_msb: int      = 0
+            self.volt_lsb: int      = 0
+            self.map: int           = 0
+            self.pwr: int           = 0
+        else:
+            self.button_state: int  = data[0]
+            self.dial_0: int        = data[1]
+            self.dial_1: int        = data[2]
+            self.dial_2: int        = data[3]
+            self.soc: int           = data[4]
+            self.temp: int          = data[5]
+            self.curr_msb: int      = data[6]
+            self.curr_lsb: int      = data[7]
+            self.volt_msb: int      = data[8]
+            self.volt_lsb: int      = data[9]
+            self.map: int           = data[10]
+            self.pwr: int           = data[11]
