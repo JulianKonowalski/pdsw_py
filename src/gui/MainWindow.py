@@ -1,3 +1,5 @@
+import logging
+
 from PySide6.QtCore import Signal, Slot, Qt
 from PySide6.QtWidgets import QMainWindow
 
@@ -6,12 +8,15 @@ from src.spi.CarData import CarData
 
 from src.gui.MainView import MainView
 
+LOGGER: logging.Logger = logging.getLogger(__name__)
+
 class MainWindow(QMainWindow):
 
   dataUpdated: Signal = Signal(CarData)
   dataRequest: Signal = Signal(None)
 
   def __init__(self) -> None:
+    LOGGER.log("Creating MainWindow instance")
     QMainWindow.__init__(self)
     
     self.spi_bus: SpiBus = SpiBus()
@@ -24,6 +29,7 @@ class MainWindow(QMainWindow):
 
   @Slot(None)
   def onDataRequest(self) -> None:
+    LOGGER.log("MainWindow executing onDataRequest")
     car_data: CarData = self.spi_bus.getCarData()
     self.dataUpdated.emit(car_data)
     self.dataRequest.emit()

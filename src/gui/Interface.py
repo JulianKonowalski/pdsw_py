@@ -1,16 +1,19 @@
 import os
 import sys
 import pathlib
+import logging
 
 from PySide6.QtWidgets import QApplication
 
 from src.gui.MainWindow import MainWindow
 
+LOGGER: logging.Logger = logging.getLogger(__name__)
 STYLESHEET_FILE: str = os.path.join(pathlib.Path(__file__).parent.resolve(), "Interface.qss")
 
 class Interface(QApplication):
   
   def __init__(self) -> None:
+    LOGGER.log("Creating interface instance")
     QApplication.__init__(self)
     with open(STYLESHEET_FILE, "r") as stylesheet:
       self.setStyleSheet(stylesheet.read())
@@ -20,5 +23,6 @@ class Interface(QApplication):
     self.main_window.show()
 
   def run(self) -> None:
+    LOGGER.log("Starting interface instance")
     self.main_window.dataRequest.emit()
     sys.exit(self.exec())
