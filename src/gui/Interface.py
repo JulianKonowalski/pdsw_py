@@ -1,5 +1,4 @@
 import os
-import sys
 import pathlib
 import logging
 
@@ -22,7 +21,7 @@ class Interface(QApplication):
     self.main_window.setFixedSize(800, 440)
     self.main_window.show()
 
-  def run(self) -> None:
+  def run(self) -> int:
     LOGGER.info("Starting interface instance")
     self.main_window.dataRequest.emit()
-    sys.exit(self.exec())
+    return self.exec()
