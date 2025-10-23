@@ -4,7 +4,7 @@ except ImportError: import mock.mockSpidev as spidev
 from src.spi.CarData import CarData
 
 SPI_BUS       = 0
-SPI_RATE      = 9600
+SPI_RATE      = 1000000 
 SPI_MODE      = 0  
 SPI_DEVICE    = 0
 
