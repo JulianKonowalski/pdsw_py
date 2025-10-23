@@ -9,5 +9,4 @@ if __name__ == "__main__":
 
 
     while True:
-        carData = spibus.getCarData()
-        print(carData.getData())
+        print(spibus.getCarData())

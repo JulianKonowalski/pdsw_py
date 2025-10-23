@@ -6,7 +6,7 @@ except ImportError: import mock.mockSpidev as spidev
 from src.spi.CarData import CarData
 
 SPI_BUS       = 0
-SPI_RATE      = 1000000 
+SPI_RATE      = 9600
 SPI_MODE      = 0  
 SPI_DEVICE    = 0
 
@@ -21,9 +21,10 @@ class SpiBus:
         self.spi.mode = SPI_MODE
 
     def getCarData(self) -> CarData:
-        spi_response: list[int] = self.spi.xfer2(self.dummy_data)
-        car_data: CarData = CarData()
-        dataframe: dict = CarData.getDataframe()
-        for idx, key in enumerate(dataframe):
-            car_data.setValue(key, spi_response[idx])
-        return car_data
+        return self.spi.xfer2(self.dummy_data)
+        # spi_response: list[int] = self.spi.xfer2(self.dummy_data)
+        # car_data: CarData = CarData()
+        # dataframe: dict = CarData.getDataframe()
+        # for idx, key in enumerate(dataframe):
+        #     car_data.setValue(key, spi_response[idx])
+        # return car_data
