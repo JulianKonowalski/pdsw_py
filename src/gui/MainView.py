@@ -50,10 +50,9 @@ class MainView(QWidget):
 
   @Slot(CarData)
   def update(self, data: CarData):
-    pass
-    # self.map_panel.update() 
-    # self.pwr_panel.update()
-    # self.soc_panel.update()
-    # self.temp_panel.update()
-    # self.curr_panel.update()
-    # self.volt_panel.update()
+    self.map_panel.updateData(data.getValue("DIAL_0")) 
+    self.pwr_panel.updateData(data.getValue("DIAL_1"))
+    self.soc_panel.updateData(data.getValue("SOC"))
+    self.temp_panel.updateData(data.getValue("TEMP"))
+    self.curr_panel.updateData(data.getValue("CURR"))
+    self.volt_panel.updateData(data.getValue("VOLT"))
