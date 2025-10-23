@@ -1,3 +1,5 @@
+import copy
+
 try: import spidev
 except ImportError: import mock.mockSpidev as spidev
 
@@ -41,5 +43,5 @@ class SpiBus:
         dataframe: dict = CarData.getDataframe()
         for idx, key in enumerate(dataframe):
             car_data.setValue(key, spi_response[idx])
-        return car_data
+        return copy.deepcopy(car_data)
         # return self.__normalize__(car_data)
