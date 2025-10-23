@@ -14,17 +14,16 @@ class MainWindow(QMainWindow):
   def __init__(self) -> None:
     QMainWindow.__init__(self)
     
-    # self.spi_bus: SpiBus = SpiBus()
+    self.spi_bus: SpiBus = SpiBus()
     self.main_view: MainView = MainView(self)
 
-    # self.dataRequest.connect(self.onDataRequest, type=Qt.ConnectionType.QueuedConnection)
-    # self.dataUpdated.connect(self.main_view.update)
+    self.dataRequest.connect(self.onDataRequest, type=Qt.ConnectionType.QueuedConnection)
+    self.dataUpdated.connect(self.main_view.update)
 
     self.setCentralWidget(self.main_view)
 
   @Slot(None)
   def onDataRequest(self) -> None:
-    # car_data: CarData = self.spi_bus.getCarData()
-    car_data: CarData = CarData()
+    car_data: CarData = self.spi_bus.getCarData()
     self.dataUpdated.emit(car_data)
     self.dataRequest.emit()
