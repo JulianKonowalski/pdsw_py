@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
     LOGGER.info("Creating MainWindow instance")
     QMainWindow.__init__(self)
     
-    self.spi_bus: SpiBus = SpiBus()
+    # self.spi_bus: SpiBus = SpiBus()
     self.main_view: MainView = MainView(self)
 
     # self.dataRequest.connect(self.onDataRequest, type=Qt.ConnectionType.QueuedConnection)
@@ -30,6 +30,7 @@ class MainWindow(QMainWindow):
   @Slot(None)
   def onDataRequest(self) -> None:
     LOGGER.info("MainWindow executing onDataRequest")
-    car_data: CarData = self.spi_bus.getCarData()
+    # car_data: CarData = self.spi_bus.getCarData()
+    car_data: CarData = CarData()
     self.dataUpdated.emit(car_data)
     self.dataRequest.emit()
