@@ -36,9 +36,10 @@ class SpiBus:
         return car_data
 
     def getCarData(self) -> CarData:
-        spi_response: list = self.spi.xfer2(self.dummy_data)
+        spi_response: list[int] = self.spi.xfer2(self.dummy_data)
         car_data: CarData = CarData()
         dataframe: dict = CarData.getDataframe()
         for idx, key in enumerate(dataframe):
             car_data.setValue(key, spi_response[idx])
-        return self.__normalize__(car_data)
+        return car_data
+        # return self.__normalize__(car_data)
