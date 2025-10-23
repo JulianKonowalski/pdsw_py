@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
   dataRequest: Signal = Signal(None)
 
   def __init__(self) -> None:
-    LOGGER.log("Creating MainWindow instance")
+    LOGGER.info("Creating MainWindow instance")
     QMainWindow.__init__(self)
     
     self.spi_bus: SpiBus = SpiBus()
@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
 
   @Slot(None)
   def onDataRequest(self) -> None:
-    LOGGER.log("MainWindow executing onDataRequest")
+    LOGGER.info("MainWindow executing onDataRequest")
     car_data: CarData = self.spi_bus.getCarData()
     self.dataUpdated.emit(car_data)
     self.dataRequest.emit()

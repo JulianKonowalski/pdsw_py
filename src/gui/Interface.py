@@ -13,7 +13,7 @@ STYLESHEET_FILE: str = os.path.join(pathlib.Path(__file__).parent.resolve(), "In
 class Interface(QApplication):
   
   def __init__(self) -> None:
-    LOGGER.log("Creating interface instance")
+    LOGGER.info("Creating interface instance")
     QApplication.__init__(self)
     with open(STYLESHEET_FILE, "r") as stylesheet:
       self.setStyleSheet(stylesheet.read())
@@ -23,6 +23,6 @@ class Interface(QApplication):
     self.main_window.show()
 
   def run(self) -> None:
-    LOGGER.log("Starting interface instance")
+    LOGGER.info("Starting interface instance")
     self.main_window.dataRequest.emit()
     sys.exit(self.exec())

@@ -14,7 +14,7 @@ LOGGER: logging.Logger = logging.getLogger(__name__)
 class SpiBus:
 
     def __init__(self) -> None:
-        LOGGER.log("Creating SpiBus instance")
+        LOGGER.info("Creating SpiBus instance")
 
         buffer_size: int = len(CarData.getDataframe())
         self.dummy_data = [0x00 for i in range(buffer_size)]
@@ -41,8 +41,8 @@ class SpiBus:
         return car_data
 
     def getCarData(self) -> CarData:
-        LOGGER.log("SpiBus executing getCarData")
-        
+        LOGGER.info("SpiBus executing getCarData")
+
         spi_response: list = self.spi.xfer2(self.dummy_data)
         car_data: CarData = CarData()
         dataframe: dict = CarData.getDataframe()

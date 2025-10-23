@@ -11,7 +11,7 @@ class DataPanel(QWidget):
   dataUpdated: Signal = Signal(any)
 
   def __init__(self, title: str, initial_data: int, parent: QWidget = None):
-    LOGGER.log("Creating DataPanel instance")
+    LOGGER.info("Creating DataPanel instance")
 
     QWidget.__init__(self, parent)
 
@@ -34,18 +34,18 @@ class DataPanel(QWidget):
 
   @Slot(int)
   def updateData(self, new_value: int):
-    LOGGER.log("DataPanel executing updateData")
+    LOGGER.info("DataPanel executing updateData")
     self.content.setText(str(new_value))
     self.dataUpdated.emit()
 
   @Slot(int)
   def onDataUpdated(self, new_value: int):
-    LOGGER.log("DataPanel executing onDataUpdated")
+    LOGGER.info("DataPanel executing onDataUpdated")
     # do something, maybe change style
     pass
 
   def resizeEvent(self, event):
-    LOGGER.log("DataPanel executing resizeEvent")
+    LOGGER.info("DataPanel executing resizeEvent")
     font: QFont = self.header.font()
 
     font.setPointSize(self.height() / 8)
