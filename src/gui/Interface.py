@@ -2,6 +2,7 @@ import os
 import pathlib
 import logging
 
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication
 
 from src.gui.MainWindow import MainWindow
@@ -18,10 +19,10 @@ class Interface(QApplication):
       self.setStyleSheet(stylesheet.read())
 
     self.main_window: MainWindow = MainWindow()
-    self.main_window.setFixedSize(800, 440)
+    self.main_window.setWindowState(Qt.WindowState.WindowFullScreen)
     self.main_window.show()
 
   def run(self) -> int:
     LOGGER.info("Starting interface instance")
-    self.main_window.dataRequest.emit()
+    # self.main_window.dataRequest.emit()
     return self.exec()
