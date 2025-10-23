@@ -1,5 +1,3 @@
-import logging
-
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout
 
@@ -7,13 +5,9 @@ from src.spi.CarData import CarData
 
 from src.gui.DataPanel import DataPanel
 
-LOGGER: logging.Logger = logging.getLogger(__name__)
-
 class MainView(QWidget):
   
   def __init__(self, parent: QWidget = None) -> None:
-    LOGGER.info("Creating MainView instance")
-
     QWidget.__init__(self, parent)
 
     self.map_panel: DataPanel  = DataPanel("MAP", 0)
@@ -56,7 +50,6 @@ class MainView(QWidget):
 
   @Slot(CarData)
   def update(self, data: CarData):
-    LOGGER.info("MainView executing update")
     pass
     # self.map_panel.update() 
     # self.pwr_panel.update()

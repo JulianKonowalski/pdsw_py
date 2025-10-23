@@ -1,5 +1,3 @@
-import logging
-
 try: import spidev
 except ImportError: import mock.mockSpidev as spidev
 
@@ -9,13 +7,10 @@ SPI_BUS       = 0
 SPI_RATE      = 9600
 SPI_MODE      = 0  
 SPI_DEVICE    = 0
-LOGGER: logging.Logger = logging.getLogger(__name__)
 
 class SpiBus:
 
     def __init__(self) -> None:
-        LOGGER.info("Creating SpiBus instance")
-
         buffer_size: int = len(CarData.getDataframe())
         self.dummy_data = [0x00 for i in range(buffer_size)]
         self.spi = spidev.SpiDev()
@@ -41,8 +36,6 @@ class SpiBus:
         return car_data
 
     def getCarData(self) -> CarData:
-        LOGGER.info("SpiBus executing getCarData")
-
         spi_response: list = self.spi.xfer2(self.dummy_data)
         car_data: CarData = CarData()
         dataframe: dict = CarData.getDataframe()
