@@ -19,5 +19,5 @@ class Interface(QApplication):
     self.main_window.show()
 
   def run(self) -> int:
-    # self.main_window.dataRequest.emit()
+    self.main_window.dataRequest.emit()
     return self.exec()
