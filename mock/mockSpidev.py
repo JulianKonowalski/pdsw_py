@@ -27,8 +27,6 @@ class SpiDev:
             self.bms_currLSB,
             self.volt >> 8 & 0xFF,
             self.volt & 0xFF,
-            # self.bms_voltMSB,
-            # self.bms_voltLSB,
             self.pedal_map,
             self.power_limit,
         ]
@@ -96,19 +94,6 @@ class SpiDev:
     def __update__(self):
         if self.buttonState & 1 and self.volt < 100: self.volt += 2
         elif self.buttonState & 2 and self.volt > 5: self.volt -= 4
-
-        # self.bms_soc -= 1
-        # self.bms_temp += int(
-        #     5 * math.sin(self.testSinArg)
-        # )  # again slow, but left as a proof of concept
-
-        # curr = self.bms_currMSB << 8 | self.bms_currLSB
-        # curr += int(20 * math.cos(self.testSinArg))
-        # self.bms_currLSB = curr & 0xFF
-        # self.bms_currMSB = (curr >> 8) & 0xFF
-
-        # self.testSinArg += 3.14 / 6
-
         self.window.after(self.timestep, self.__update__)
 
     def __setup_test_window__(self):
