@@ -1,6 +1,6 @@
 class CarData:
 
-    def __init__(self, data: list[int] = None) -> None:
+    def __init__(self, data: bytearray = None) -> None:
         if data == None:
             self.button_state: int  = 0
             self.dial_0: int        = 0
@@ -15,15 +15,15 @@ class CarData:
             self.map: int           = 0
             self.pwr: int           = 0
         else:
-            self.button_state: int  = data[0]
-            self.dial_0: int        = data[1]
-            self.dial_1: int        = data[2]
-            self.dial_2: int        = data[3]
-            self.soc: int           = data[4]
-            self.temp: int          = data[5]
-            self.curr_msb: int      = data[6]
-            self.curr_lsb: int      = data[7]
-            self.volt_msb: int      = data[8]
-            self.volt_lsb: int      = data[9]
-            self.map: int           = data[10]
-            self.pwr: int           = data[11]
+            self.button_state: int  = int.from_bytes(data[0])
+            self.dial_0: int        = int.from_bytes(data[1])
+            self.dial_1: int        = int.from_bytes(data[2])
+            self.dial_2: int        = int.from_bytes(data[3])
+            self.soc: int           = int.from_bytes(data[4])
+            self.temp: int          = int.from_bytes(data[5])
+            self.curr_msb: int      = int.from_bytes(data[6])
+            self.curr_lsb: int      = int.from_bytes(data[7])
+            self.volt_msb: int      = int.from_bytes(data[8])
+            self.volt_lsb: int      = int.from_bytes(data[9])
+            self.map: int           = int.from_bytes(data[10])
+            self.pwr: int           = int.from_bytes(data[11])
